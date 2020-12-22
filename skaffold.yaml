@@ -1,0 +1,14 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+metadata:
+  name: fastapi-template
+build:
+  artifacts:
+  - image: cloud.canister.io:5000/hhnj/fastapi-template
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - deployment/deployment.yaml
+    - deployment/service.yaml

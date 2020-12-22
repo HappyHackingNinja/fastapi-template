@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi-template
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapi-template
+  template:
+    metadata:
+      labels:
+        app: fastapi-template
+    spec:
+      containers:
+        - name: fastapi-template
+          image: cloud.canister.io:5000/hhnj/fastapi-template:latest
+          ports:
+            - containerPort: 80
+      imagePullSecrets:
+        - name: canister-secret
